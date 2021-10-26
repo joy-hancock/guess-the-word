@@ -5,41 +5,49 @@ const guessedLetters = document.querySelector(".guessed-letters");
 const guessButton = document.querySelector(".guess");
 
 //The text input where the player will guess a letter.
-const letterInput = document.querySelector(".letter");
+const playerGuess = document.querySelector(".letter");
 
 //The empty paragraph where the word in progress will appear.
-const wordProgress = document.querySelector(".word-in-progress");
+const wordInProgress = document.querySelector(".word-in-progress");
 
 //The paragraph where the remaining guesses will display.
-const remainingGuess = document.querySelector(".remaining");
+const remainingGuesses = document.querySelector(".remaining");
 
 //The span inside the paragraph where the remaining guesses will display.
-const remainingGuessSpan = document.querySelector(".remaining span");
+const remainingLetters = document.querySelector(".remaining span");
 
 //The empty paragraph where messages will appear when the player guesses a letter.
-const guessedMessage = document.querySelector(".message");
+const playerMessage = document.querySelector(".message");
 
 //The hidden button that will appear prompting the player to play again.
-const playAgainButton = document.querySelector(".play-again");
+const hiddenButton = document.querySelector(".play-again");
 
-//Test word
+//Starting word to test game.
 const word = "magnolia";
 
+
+//Replace letters with circles.
 const placeholder = function (word) {
-    const placeholderLetters = [];
+    //Create empty array for holding circles.
+    const placeholderCircles = [];
+    //Break apart letters, for each letter looped, circle pushed into circle array.
     for (const letter of word) {
         console.log(letter);
-        placeholderLetters.push("●");
+        placeholderCircles.push("●");
     }
-    wordProgress.innerText = placeholderLetters.join("");
+    wordInProgress.innerText = placeholderCircles.join("");
 };
 
 placeholder(word);
 
+//Capture input value.
 guessButton.addEventListener("click", function(e) {
     e.preventDefault();
-    const guess = letterInput.value;
+    //Single variable for global input variable to catch value.
+    const guess = playerGuess.value
     console.log(guess);
-    letterInput.innerText = "";
-})
-
+    //Empty input value
+    playerGuess.value = "";
+});
+    
+    
